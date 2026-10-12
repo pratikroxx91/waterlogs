@@ -46,7 +46,6 @@ const reportSchema = new mongoose.Schema({
 
     images: {
         type: String,
-        required: true
     },
 
     location: {

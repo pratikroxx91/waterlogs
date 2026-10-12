@@ -245,10 +245,6 @@ const CreateReport = () => {
                                 onChange={handleImageChange}
                                 className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3"
                             />
-
-                            <p className="text-sm text-gray-500 mt-2">
-                                You can upload up to 3 photos.
-                            </p>
                         </div>
 
 
