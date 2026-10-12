@@ -40,7 +40,7 @@ const ReportDetails = () => {
                             report && (
                                 <div className='bg-gray-900 border border-gray-700 rounded-xl p-6'>
 
-                                    {report.images.length > 0 && (
+                                    {report.images && (
                                         <img src={report.images}
                                             alt="Waterlogged area"
                                             className='w-full max-h-72 object-cover rounded-lg mb-6'

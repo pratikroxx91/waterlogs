@@ -57,37 +57,70 @@ const AllReports = () => {
 
                 <h1 className='font-semibold text-xl text-gray-300 py-5'>Latest Waterlogging Reports</h1>
 
-                <div className='grid gap-2'>
-                    {loading ? (<LoadingSpinner />) : publicReports.length === 0 ? (
+                <div className="grid gap-2">
+                    {loading ? (
+                        <LoadingSpinner />
+                    ) : publicReports.length === 0 ? (
                         <EmptyState message="There are no reports to show." />
                     ) : (
                         publicReports.map((report) => (
                             <div
                                 key={report._id}
                                 onClick={() => navigate(`/reports/${report._id}`)}
-                                className='bg-gray-900 border border-gray-700 rounded-lg p-5 cursor-pointer hover:border-gray-500 transition'
+                                className="bg-gray-900 border border-gray-700 rounded-lg p-5 cursor-pointer hover:border-gray-500 transition"
                             >
-                                <h2 className="text-lg font-semibold mb-2">
-                                    {report.location.area}, {report.location.landmark}
-                                </h2>
-                                <h2 className='text-lg font-bold mb-2'>Waterlogging Level:{" "}
-                                    <span className={`px-3 py-1 rounded-full ${waterloggingStyles[report.waterloggingType]}`}>
-                                        {report.waterloggingType}
-                                    </span>
-                                </h2>
-                                <div className='space-y-3'>
-                                    <p className='text-gray-300 mb-3'>Description: {report.description}</p>
-                                    <p className='text-sm text-gray-400'>Status:{" "}
-                                        <span className={`px-3 py-1 rounded-full ${statusStyles[report.status]}`}>
-                                            {report.status}
-                                        </span>
-                                    </p>
-                                    <p className='text-sm text-gray-400'>Submitted: {new Date(report.submittedAt).toLocaleString()} </p>
+                                <div className="flex flex-col sm:flex-row gap-5">
+                                    {/* Report details - left */}
+                                    <div className="flex-1 min-w-0">
+                                        <h2 className="text-lg font-semibold mb-2">
+                                            {report.location.area}, {report.location.landmark}
+                                        </h2>
+
+                                        <h2 className="text-lg font-bold mb-4">
+                                            Waterlogging Level:{" "}
+                                            <span
+                                                className={`px-3 py-1 rounded-full ${waterloggingStyles[report.waterloggingType]}`}
+                                            >
+                                                {report.waterloggingType}
+                                            </span>
+                                        </h2>
+
+                                        <div className="space-y-3">
+                                            <p className="text-gray-300">
+                                                Description: {report.description}
+                                            </p>
+
+                                            <p className="text-sm text-gray-400">
+                                                Status:{" "}
+                                                <span
+                                                    className={`px-3 py-1 rounded-full ${statusStyles[report.status]}`}
+                                                >
+                                                    {report.status}
+                                                </span>
+                                            </p>
+
+                                            <p className="text-sm text-gray-400">
+                                                Submitted:{" "}
+                                                {new Date(report.submittedAt).toLocaleString()}
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    {/* Uploaded image - right */}
+                                    {report.images && (
+                                        <div className="w-full sm:w-48 md:w-64 ">
+                                            <img
+                                                src={report.images}
+                                                alt={`Waterlogging at ${report.location.area}`}
+                                                className="w-full h-40 sm:h-36 object-cover rounded-lg border border-red-700"
+                                            />
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         ))
                     )}
-                </div >
+                </div>
 
             </div>
         </>
