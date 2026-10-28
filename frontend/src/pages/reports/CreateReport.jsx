@@ -126,8 +126,13 @@ const CreateReport = () => {
                         Report Waterlogging
                     </h1>
 
-                    <p className="text-gray-400 mb-8">
+                    <p className="text-gray-400 mb-4">
                         Submit information about a waterlogged area.
+                    </p>
+
+                    <p className="text-gray-300 text-xs leading-relaxed mb-5 bg-blue-950/30 border border-blue-900/60 border-l-4 border-l-amber-500 rounded-lg px-3 py-3">
+                        <span className="font-semibold text-amber-400">Note: </span>
+                        After submitting, your report will be reviewed by the admin before it is published. Once approved, your report will be visible to the public and displayed in the Latest Reports section.
                     </p>
 
                     <form
